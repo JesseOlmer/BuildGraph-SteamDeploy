@@ -27,7 +27,7 @@ Example node graph:
 ```
 
 ### Creating the ConfigVdf file
-1. `$ steamcmd +login <username> <password> +quit
+1. `$ steamcmd +login <username> <password> +quit`
 2. Finish login process (may need steam guard or webpage)
 3. Zip config.vdf and get the base64 of the zip file. Powershell example:
 ```

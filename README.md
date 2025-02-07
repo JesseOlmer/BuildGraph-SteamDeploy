@@ -25,3 +25,14 @@ Example node graph:
 		<Steam-DeployBuild Username="yoursteambuilduseraccount" AppManifestFile="$(AppManifestFile)" />
 	</Node>
 ```
+
+### Creating the ConfigVdf file
+1. `$ steamcmd +login <username> <password> +quit
+2. Finish login process (may need steam guard or webpage)
+3. Zip config.vdf and get the base64 of the zip file. Powershell example:
+```
+PS > $zipPath = (Get-Item .).FullName + "\config.zip"
+PS > Compress-Archive -Path .\config\config.vdf -DestinationPath $zipPath
+PS > [Convert]::ToBase64String([IO.File]::ReadAllBytes($zipPath))
+```
+4. Put this string in a secure location available to your graph. The example node graph above uses a horde secret, but ultimately you just need it in an environment variable that the `Steam-Auth` task can read.
